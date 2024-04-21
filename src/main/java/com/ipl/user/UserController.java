@@ -30,6 +30,24 @@ public class UserController {
     @PostMapping("/users/save")
     public String saveUser(User user) {
         service.save(user);
-        return "redirect:/users";
+        return "redirect:/";
     }
+
+    @PostMapping("/login")
+    public String loginUser(User user, Model model) {
+        List<User> userList = service.listAll();
+        for (User u : userList) {
+            if (u.getEmail().equals(user.getEmail()) && u.getPassword().equals(user.getPassword())) {
+                // Authentication successful, redirect to the user list page
+                return "redirect:/dashboard";
+            }
+        }
+
+        // If no match found, add an error message to the model and return to the login page
+        model.addAttribute("error", "Invalid username or password");
+        return "index";
+    }
+
+
+
 }

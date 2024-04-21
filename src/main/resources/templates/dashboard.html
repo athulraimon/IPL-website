@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Website Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            border-radius: 8px 8px 0 0;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+        .tab:hover {
+            background-color: #555;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border-radius: 0 0 8px 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>IPL Website Dashboard</h1>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <div class="tab" onclick="showTab('ticket-booking')">Ticket Booking</div>
+        <div class="tab" onclick="showTab('upcoming-matches')">Upcoming Matches</div>
+        <div class="tab" onclick="showTab('teams')">Teams</div>
+        <div class="tab" onclick="showTab('standings')">Standings</div>
+    </div>
+
+    <!-- Tab content -->
+    <div id="ticket-booking" class="tab-content active">
+        <h2>Ticket Booking</h2>
+        <p>Book your tickets for upcoming IPL matches.</p>
+    </div>
+    <div id="upcoming-matches" class="tab-content">
+        <h2>Upcoming Matches</h2>
+        <p>Check out the schedule for upcoming IPL matches.</p>
+    </div>
+    <div id="teams" class="tab-content">
+        <h2>Teams</h2>
+        <p>Explore the teams participating in IPL.</p>
+    </div>
+    <div id="standings" class="tab-content">
+        <h2>Standings</h2>
+        <p>View the current standings of IPL teams.</p>
+    </div>
+</div>
+
+<script>
+    function showTab(tabName) {
+        // Hide all tab contents
+        var tabs = document.querySelectorAll('.tab-content');
+        tabs.forEach(function(tab) {
+            tab.classList.remove('active');
+        });
+
+        // Show the selected tab content
+        document.getElementById(tabName).classList.add('active');
+    }
+</script>
+
+</body>
+</html>
