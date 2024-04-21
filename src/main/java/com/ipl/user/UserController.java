@@ -39,7 +39,7 @@ public class UserController {
         for (User u : userList) {
             if (u.getEmail().equals(user.getEmail()) && u.getPassword().equals(user.getPassword())) {
                 // Authentication successful, redirect to the user list page
-                return "redirect:/dashboard";
+                return "redirect:/teams";
             }
         }
 
