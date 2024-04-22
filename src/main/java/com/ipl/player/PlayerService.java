@@ -1,4 +1,4 @@
-package com.ipl.teams;
+package com.ipl.player;
 
 import com.ipl.user.User;
 import com.ipl.user.UserRepository;
@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TeamService {
-    @Autowired private TeamRepository repo;
+public class PlayerService {
+    @Autowired private PlayerRepository repo;
 
-    public List<Team> listAll() {
-        return (List<Team>) repo.findAll();
+    public List<Player> listAll() {
+        return (List<Player>) repo.findAll();
     }
 
 
