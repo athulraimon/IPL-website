@@ -11,7 +11,7 @@ public class Points {
     private Integer id;
     @Column(nullable=false, unique=true, length=45)
     private String teamName;
-    @Column(nullable=false, unique=true, length=45)
+    @Column
     private String logo;
 
     @Column
