@@ -1,31 +1,98 @@
 package com.ipl.upcoming;
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name="upcoming")
-
 public class Upcoming {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @Column
     private String teamOne;
+
     @Column
     private String logoOne;
 
     @Column
     private String teamTwo;
+
     @Column
     private String logoTwo;
 
     @Column
     private String venue;
+
     @Column(nullable=false, unique=true, length=45)
     private String date;
+
     @Column
     private Integer price;
 
+    // Private constructor to prevent direct instantiation
+    private Upcoming() {}
+
+    // Builder pattern to create Upcoming objects
+    public static class Builder {
+        private String teamOne;
+        private String logoOne;
+        private String teamTwo;
+        private String logoTwo;
+        private String venue;
+        private String date;
+        private Integer price;
+
+        public Builder teamOne(String teamOne) {
+            this.teamOne = teamOne;
+            return this;
+        }
+
+        public Builder logoOne(String logoOne) {
+            this.logoOne = logoOne;
+            return this;
+        }
+
+        public Builder teamTwo(String teamTwo) {
+            this.teamTwo = teamTwo;
+            return this;
+        }
+
+        public Builder logoTwo(String logoTwo) {
+            this.logoTwo = logoTwo;
+            return this;
+        }
+
+        public Builder venue(String venue) {
+            this.venue = venue;
+            return this;
+        }
+
+        public Builder date(String date) {
+            this.date = date;
+            return this;
+        }
+
+        public Builder price(Integer price) {
+            this.price = price;
+            return this;
+        }
+
+        public Upcoming build() {
+            Upcoming upcoming = new Upcoming();
+            upcoming.teamOne = this.teamOne;
+            upcoming.logoOne = this.logoOne;
+            upcoming.teamTwo = this.teamTwo;
+            upcoming.logoTwo = this.logoTwo;
+            upcoming.venue = this.venue;
+            upcoming.date = this.date;
+            upcoming.price = this.price;
+            return upcoming;
+        }
+    }
+
+    // Getters and setters
     public Integer getId() {
         return id;
     }
