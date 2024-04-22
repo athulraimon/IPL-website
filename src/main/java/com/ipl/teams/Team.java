@@ -34,7 +34,7 @@ public class Team {
     }
 
     public String getLogo() {
-        return logo;
+        return ;
     }
 
     public void setLogo(String logo) {
