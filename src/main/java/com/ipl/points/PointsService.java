@@ -1,6 +1,5 @@
 package com.ipl.points;
 
-
 import com.ipl.user.User;
 import com.ipl.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,4 +14,6 @@ public class PointsService {
     public List<Points> listAll() {
         return (List<Points>) repo.findAll();
     }
+
+
 }

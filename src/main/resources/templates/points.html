@@ -65,6 +65,11 @@
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
+
+        img {
+            width: 50px; /* Adjust this value to your desired size */
+            height: 50px; /* Adjust this value to your desired size */
+        }
     </style>
 </head>
 <body>
@@ -74,7 +79,7 @@
 
     <!-- Tabs -->
     <div class="tabs">
-        <div class="tab" onclick="showTab('ticket-booking')">Ticket Booking</div>
+        <a class="tab" href="/ticket-booking">Ticket Booking</a>
         <div class="tab" onclick="showTab('points')">Points Table</div>
         <div class="tab" onclick="showTab('upcoming')">Upcoming Matches</div>
         <div class="tab" onclick="showTab('teams')">Teams</div>
@@ -103,7 +108,7 @@
             <tbody>
             <th:block th:each="points :${listPoints}">
                 <tr>
-                    <td></td>
+                    <td><img th:src="${points.logo}" alt=""></td>
                     <td th:text="${points.teamName}"></td>
                     <td th:text="${points.won}"></td>
                     <td th:text="${points.lost}"></td>

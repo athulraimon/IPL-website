@@ -65,6 +65,10 @@
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
+        img {
+            width: 25px; /* Adjust this value to your desired size */
+            height: 25px; /* Adjust this value to your desired size */
+        }
     </style>
 </head>
 <body>
@@ -72,7 +76,7 @@
 <div class="container">
     <h1>IPL Website Dashboard</h1>
     <div class="tabs">
-        <div class="tab" onclick="showTab('ticket-booking')">Ticket Booking</div>
+        <a class="tab" href="/ticket-booking">Ticket Booking</a>
         <div class="tab" onclick="showTab('points')">Points Table</div>
         <div class="tab" onclick="showTab('upcoming')">Upcoming Matches</div>
         <div class="tab" onclick="showTab('teams')">Teams</div>
