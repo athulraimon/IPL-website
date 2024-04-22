@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IPL Website Dashboard - Points Table</title>
+    <title>IPL Website Dashboard</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,6 +22,31 @@
         h1 {
             text-align: center;
             color: #333;
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            border-radius: 8px 8px 0 0;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+        .tab:hover {
+            background-color: #555;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border-radius: 0 0 8px 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .tab-content.active {
+            display: block;
         }
         table {
             width: 100%;
@@ -45,35 +70,84 @@
 <body>
 
 <div class="container">
-    <h1>IPL Website Dashboard - Points Table</h1>
+    <h1>IPL Website Dashboard</h1>
 
-    <!-- Points Table -->
-    <table>
-        <thead>
-        <tr>
-            <th>Logo</th>
-            <th>Team Name</th>
-            <th>Won</th>
-            <th>Lost</th>
-            <th>Points</th>
-            <th>NRR</th>
-        </tr>
-        </thead>
-        <tbody>
+    <!-- Tabs -->
+    <div class="tabs">
+        <div class="tab" onclick="showTab('ticket-booking')">Ticket Booking</div>
+        <div class="tab" onclick="showTab('points')">Points Table</div>
+        <div class="tab" onclick="showTab('upcoming')">Upcoming Matches</div>
+        <div class="tab" onclick="showTab('teams')">Teams</div>
+    </div>
+
+    <!-- Ticket Booking Tab content -->
+    <div id="ticket-booking" class="tab-content">
+        <h2>Ticket Booking</h2>
+        <p>Book your tickets for upcoming IPL matches.</p>
+    </div>
+
+    <!-- Points Table Tab content -->
+    <div id="points" class="tab-content active">
+        <h2>Points Table</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Logo</th>
+                <th>Team Name</th>
+                <th>Won</th>
+                <th>Lost</th>
+                <th>Points</th>
+                <th>NRR</th>
+            </tr>
+            </thead>
+            <tbody>
             <th:block th:each="points :${listPoints}">
                 <tr>
                     <td></td>
-                    <td>[[${points.teamName}]]</td>
-                    <td>[[${points.won}]]</td>
-                    <td>[[${points.lost}]]</td>
-                    <td>[[${points.points}]]</td>
-                    <td>[[${points.nrr}]]</td>
+                    <td th:text="${points.teamName}"></td>
+                    <td th:text="${points.won}"></td>
+                    <td th:text="${points.lost}"></td>
+                    <td th:text="${points.points}"></td>
+                    <td th:text="${points.nrr}"></td>
                 </tr>
             </th:block>
+            </tbody>
+        </table>
+    </div>
 
-        </tbody>
-    </table>
+    <!-- Upcoming Matches Tab content -->
+    <div id="upcoming-matches" class="tab-content">
+        <h2>Upcoming Matches</h2>
+        <p>Check out the schedule for upcoming IPL matches.</p>
+    </div>
+
+    <!-- Teams Tab content -->
+    <div id="teams" class="tab-content">
+        <h2>Teams</h2>
+        <p>Explore the teams participating in IPL.</p>
+    </div>
 </div>
+
+<script>
+    function showTab(tabName) {
+        var tabUrlMap = {
+            'ticket-booking': '/ticket-booking',
+            'points': '/points',
+            'upcoming': '/upcoming',
+            'teams': '/teams'
+        };
+
+        // Get the URL corresponding to the clicked tab name
+        var url = tabUrlMap[tabName];
+
+        // Navigate to the URL
+        if (url) {
+            window.location.href = url;
+        }
+
+
+    }
+</script>
 
 </body>
 </html>
