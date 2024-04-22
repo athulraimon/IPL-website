@@ -23,6 +23,8 @@ public class Upcoming {
     private String venue;
     @Column(nullable=false, unique=true, length=45)
     private String date;
+    @Column
+    private Integer price;
 
     public Integer getId() {
         return id;
@@ -78,5 +80,13 @@ public class Upcoming {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 }
