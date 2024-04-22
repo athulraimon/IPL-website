@@ -1,18 +1,49 @@
 package com.ipl.player;
 
+import jakarta.persistence.*;
 
+@Entity
+@Table(name="players")
 
 public class Player {
-    private String name;
-    private int age;
-    private String role; // batsman, bowler, all-rounder, etc.
-    private String country;
 
-    public Player(String name, int age, String role, String country) {
-        this.name = name;
-        this.age = age;
-        this.role = role;
-        this.country = country;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(nullable=false, unique=true, length=45)
+    private String name;
+
+    @Column(nullable=false, unique=true, length=45)
+    private String teamName;
+
+    @Column
+    private Integer age;
+
+    @Column
+    private String role;
+
+    @Column
+    private Integer matchesPlayed;
+
+    @Column
+    private Integer runs;
+
+    @Column
+    private Integer wickets;
+
+    @Column
+    private Integer average;
+
+    @Column
+    private Double economy;
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -23,11 +54,19 @@ public class Player {
         this.name = name;
     }
 
-    public int getAge() {
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -39,13 +78,43 @@ public class Player {
         this.role = role;
     }
 
-    public String getCountry() {
-        return country;
+    public Integer getMatchesPlayed() {
+        return matchesPlayed;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setMatchesPlayed(Integer matchesPlayed) {
+        this.matchesPlayed = matchesPlayed;
     }
 
-    // Add any other methods you need for the Player class
+    public Integer getRuns() {
+        return runs;
+    }
+
+    public void setRuns(Integer runs) {
+        this.runs = runs;
+    }
+
+    public Integer getWickets() {
+        return wickets;
+    }
+
+    public void setWickets(Integer wickets) {
+        this.wickets = wickets;
+    }
+
+    public Integer getAverage() {
+        return average;
+    }
+
+    public void setAverage(Integer average) {
+        this.average = average;
+    }
+
+    public Double getEconomy() {
+        return economy;
+    }
+
+    public void setEconomy(Double economy) {
+        this.economy = economy;
+    }
 }
