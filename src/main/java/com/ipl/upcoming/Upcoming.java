@@ -9,18 +9,74 @@ public class Upcoming {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(nullable=false, unique=true, length=45)
+    @Column
     private String teamOne;
-    @Column(nullable=false, unique=true, length=45)
+    @Column
     private String logoOne;
 
-    @Column(nullable=false, unique=true, length=45)
+    @Column
     private String teamTwo;
-    @Column(nullable=false, unique=true, length=45)
+    @Column
     private String logoTwo;
 
-    @Column(nullable=false, unique=true, length=45)
+    @Column
     private String venue;
     @Column(nullable=false, unique=true, length=45)
     private String date;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTeamOne() {
+        return teamOne;
+    }
+
+    public void setTeamOne(String teamOne) {
+        this.teamOne = teamOne;
+    }
+
+    public String getLogoOne() {
+        return logoOne;
+    }
+
+    public void setLogoOne(String logoOne) {
+        this.logoOne = logoOne;
+    }
+
+    public String getTeamTwo() {
+        return teamTwo;
+    }
+
+    public void setTeamTwo(String teamTwo) {
+        this.teamTwo = teamTwo;
+    }
+
+    public String getLogoTwo() {
+        return logoTwo;
+    }
+
+    public void setLogoTwo(String logoTwo) {
+        this.logoTwo = logoTwo;
+    }
+
+    public String getVenue() {
+        return venue;
+    }
+
+    public void setVenue(String venue) {
+        this.venue = venue;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 }
