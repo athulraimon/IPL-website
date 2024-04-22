@@ -18,6 +18,10 @@ public class User {
     private String lastName;
 
     private boolean enabled;
+
+    public User() {
+    }
+
     public Integer getId() {
         return id;
     }

@@ -1,3 +1,4 @@
+
 package com.ipl.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,43 +12,35 @@ import java.util.List;
 
 @Controller
 public class UserController {
-    @Autowired private UserService service;
+    @Autowired private UserServiceImpl userService;
 
     @GetMapping("/users")
     public String showUserList(Model model) {
-        List<User> listUsers=service.listAll();
+        List<User> listUsers = userService.listAll();
         model.addAttribute("listUsers", listUsers);
 
-        return "users" ;
+        return "users";
     }
 
     @GetMapping("/users/new")
     public String showNewForm(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("user", userService.createUser(null, null, null, null));
         return "user_form";
     }
 
     @PostMapping("/users/save")
     public String saveUser(User user) {
-        service.save(user);
+        userService.save(user);
         return "redirect:/";
     }
 
     @PostMapping("/login")
     public String loginUser(User user, Model model) {
-        List<User> userList = service.listAll();
-        for (User u : userList) {
-            if (u.getEmail().equals(user.getEmail()) && u.getPassword().equals(user.getPassword())) {
-                // Authentication successful, redirect to the user list page
-                return "redirect:/points";
-            }
+        if (userService.login(user)) {
+            return "redirect:/points";
+        } else {
+            model.addAttribute("error", "Invalid username or password");
+            return "index";
         }
-
-        // If no match found, add an error message to the model and return to the login page
-        model.addAttribute("error", "Invalid username or password");
-        return "index";
     }
-
-
-
 }
